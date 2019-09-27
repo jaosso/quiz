@@ -11,17 +11,70 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
 </head>
+<!-- BODY -->
 
 <body>
-
   <div class="container">
-    <nav class="navbar navbar-light bg-primary">
-      <span class="navbar-brand mb-0 h1">JesusQUIZtus</span>
+    <nav class="navbar navbar-fixed">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand text-primary" href="#">JesusQUIZtus</a>
+        </div>
+      </div>
     </nav>
+    <!-- START screen -->
     <div id="start_screen" class="jumbotron quiz_start">
       <h1 class="display-3">Herzlich Willkommen</h1>
       <p class="lead">Das Quiz startet sofort...</p>
       <p><button role="button" class="btn btn-primary btn-lg" id="start_button">Start</button></p>
+    </div>
+    <!-- QUESTION screen -->
+    <div id="question_screen" class="jumbotron quiz_question" hidden>
+      <h2>Frage <span id="question_nbr">1</span></h2>
+      <p id="question_text" class="display-4">Was ist die richtige Antwort?</p>
+      <div class="row">
+        <!-- answer A -->
+        <div class="col-md-6">
+          <p><button id="answer_a_button" class="answer btn btn-default btn-block bg-light" role="button">A: <span
+                id="answer_a">Antwort A</span></button></p>
+        </div>
+        <!-- answer B -->
+        <div class="col-md-6">
+          <p><button id="answer_b_button" class="answer btn btn-default btn-block bg-light" role="button">B: <span
+                id="anwer_b">Antwort B</span></button></p>
+        </div>
+      </div>
+      <div class="row">
+        <!-- answer C -->
+        <div class="col-md-6">
+          <p><button id="answer_c_button" class="answer btn btn-default btn-block bg-light" role="button">C: <span
+                id="answer_c">Antwort C</span></button></p>
+        </div>
+        <!-- answer D -->
+        <div class="col-md-6">
+          <p><button id="answer_d_button" class="answer btn btn-default btn-block bg-light" role="button">D: <span
+                id="answer_d">Antwort D</span></button></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-10"></div>
+        <div class="col-md-2">
+          <!-- commit button -->
+          <p><button id="commit_button" class="btn btn-default btn-block bg-primary" role="button">Antworten</button>
+          </p>
+          <!-- continue button -->
+          <p><button id="continue_button" class="btn btn-default btn-block bg-primary" role="button"
+              hidden>Weiter</button>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- END screen -->
+    <div id="end_screen" class="jumbotron quiz_end" hidden>
+      <h1 class="display-3">Du hast alle Fragen beantwortet</h1>
+      <p class="lead">Du hast <span class="display-4" id="endpoints">0</span> von <span class="display-4"
+          id="possiblepoints">0</span> Fragen richtig beantwortet.</p>
+      <p> <span id="end_message" class="display-3">Das ist doch prima!</span></p>
     </div>
   </div>
 
