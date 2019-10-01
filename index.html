@@ -7,6 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Bibel Quiz</title>
 
+  <!-- include jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <!-- Bootstrap -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
@@ -35,36 +37,36 @@
       <div class="row">
         <!-- answer A -->
         <div class="col-md-6">
-          <p><button id="answer_a_button" class="answer btn btn-default btn-block bg-light" role="button">A: <span
-                id="answer_a">Antwort A</span></button></p>
+          <p><button id="answer_a_button" class="answer btn btn-secondary btn-block" role="button"><span
+                id="answer_a"></span></button></p>
         </div>
         <!-- answer B -->
         <div class="col-md-6">
-          <p><button id="answer_b_button" class="answer btn btn-default btn-block bg-light" role="button">B: <span
-                id="anwer_b">Antwort B</span></button></p>
+          <p><button id="answer_b_button" class="answer btn btn-secondary btn-block" role="button"><span
+                id="answer_b"></span></button></p>
         </div>
       </div>
       <div class="row">
         <!-- answer C -->
         <div class="col-md-6">
-          <p><button id="answer_c_button" class="answer btn btn-default btn-block bg-light" role="button">C: <span
-                id="answer_c">Antwort C</span></button></p>
+          <p><button id="answer_c_button" class="answer btn btn-secondary btn-block" role="button"><span
+                id="answer_c"></span></button></p>
         </div>
         <!-- answer D -->
         <div class="col-md-6">
-          <p><button id="answer_d_button" class="answer btn btn-default btn-block bg-light" role="button">D: <span
-                id="answer_d">Antwort D</span></button></p>
+          <p><button id="answer_d_button" class="answer btn btn-secondary btn-block" role="button"><span id="answer_d"></span></button></p>
         </div>
       </div>
       <div class="row">
         <div class="col-md-10"></div>
         <div class="col-md-2">
           <!-- commit button -->
-          <p><button id="commit_button" class="btn btn-default btn-block bg-primary" role="button">Antworten</button>
+          <p><button id="commit_button" class="disabled btn btn-default btn-block bg-primary"
+              role="button">Antworten</button>
           </p>
           <!-- continue button -->
-          <p><button id="continue_button" class="btn btn-default btn-block bg-primary" role="button"
-              hidden>Weiter</button>
+          <p><button id="continue_button" class="disabled btn btn-default btn-block bg-primary"
+              role="button">Weiter</button>
           </p>
         </div>
       </div>
@@ -77,12 +79,11 @@
       <p> <span id="end_message" class="display-3">Das ist doch prima!</span></p>
     </div>
   </div>
-
-  <!-- include jQuery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  
   <!-- include all compiled plugins -->
   <script src="js/bootstrap.min.js"></script>
   <!-- my scripts -->
+  <script src="questions/questions.js"></script>
   <script src="js/quiz.js"></script>
   <script src="js/app.js"></script>
 </body>
