@@ -1,0 +1,57 @@
+[
+  {
+    "id": "1",
+    "question": "Wie sieht ein A aus?",
+    "answers": {
+      "A": "A",
+      "B": "B",
+      "C": "C",
+      "D": "D"
+    },
+    "right": "A"
+  },
+  {
+    "id": "2",
+    "question": "Wie sieht ein B aus?",
+    "answers": {
+      "A": "A",
+      "B": "B",
+      "C": "C",
+      "D": "D"
+    },
+    "right": "B"
+  },
+  {
+    "id": "3",
+    "question": "Wie sieht ein C aus?",
+    "answers": {
+      "A": "A",
+      "B": "B",
+      "C": "C",
+      "D": "D"
+    },
+    "right": "C"
+  },
+  {
+    "id": "4",
+    "question": "Wie sieht ein D aus?",
+    "answers": {
+      "A": "A",
+      "B": "B",
+      "C": "C",
+      "D": "D"
+    },
+    "right": "D"
+  },
+  {
+    "id": "5",
+    "question": "Was ergibt die Summe 1+1?",
+    "answers": {
+      "A": "1",
+      "B": "2",
+      "C": "3",
+      "D": "4"
+    },
+    "right": "B"
+  }
+]
