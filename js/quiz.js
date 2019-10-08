@@ -7,18 +7,18 @@ var s, Quiz = {
     end_screen: $(".quiz_end"),
     // gui objects
     start_btn: $(".start"),
-    answer_btns: $("#answer"),
-    answer_a_btn: $("#answer_a"),
-    answer_b_btn: $("#answer_b"),
-    answer_c_btn: $("#answer_c"),
-    answer_d_btn: $("#answer_d"),
+    answer_btns: $(".answer"),
+    answer_a_btn: $("#answer_a_button"),
+    answer_b_btn: $("#answer_b_button"),
+    answer_c_btn: $("#answer_c_button"),
+    answer_d_btn: $("#answer_d_button"),
     commit_btn: $("#commit_button"),
     continue_btn: $("#continue_button"),
     question_nbr_text: $("#question_nbr"),
     question_text: $("#question_text"),
     endpoints_text: $("#endpoints"),
     possiblepoints_text: $("#possiblepoints"),
-    endmessage_text: $("#endmessage"),
+    endmessage_text: $("#end_message"),
     // variables
     questions: null,
     isAnswerCommited: false,
@@ -65,42 +65,57 @@ var s, Quiz = {
     });
 
     s.answer_btns.on("click", function () {
-      console.log("hi");
+      var btn;
+      if (this.id == "answer_a_button") {
+        btn = s.answer_a_btn;
+      } else if (this.id == "answer_b_button") {
+        btn = s.answer_b_btn;
+      } else if (this.id == "answer_c_button") {
+        btn = s.answer_c_btn;
+      } else if (this.id == "answer_d_button") {
+        btn = s.answer_d_btn;
+      }
+
       if (!s.isAnswerCommited) {
         if (s.selectedAnswer == null) {
-          this.selectAnswer(this);
-          s.selectedAnswer = this;
-          this.activate(s.commit_btn);
+          s.selectedAnswer = btn;
+          Quiz.selectAnswer(btn);
+          s.selectedAnswer = btn;
+          Quiz.activate(s.commit_btn);
         } else {
-          console.log("hi");
           Quiz.deselectAnswer(s.selectedAnswer);
-          Quiz.selectAnswer(this);
-          s.selectedAnswer = this;
+          Quiz.selectAnswer(btn);
+          s.selectedAnswer = btn;
         }
       }
     });
 
     s.commit_btn.on("click", function () {
-      if (selectedAnswer != null) {
+      if (s.selectedAnswer != null) {
         isAnswerCommited = true;
-        this.deactivate(s.commit_btn);
-        this.activate(s.continue_btn);
-        this.checkAnswer();
-        this.deactivate(s.commit_btn);
-        this.activate(s.continue_btn);
+        Quiz.deactivate(s.commit_btn);
+        Quiz.activate(s.continue_btn);
+        Quiz.checkAnswer();
+        Quiz.deactivate(s.commit_btn);
+        Quiz.activate(s.continue_btn);
       }
     });
 
     s.continue_btn.on("click", function () {
-      this.incrementCurrentQuestionNumber();
-      this.setupQuestionScreen();
-      if (!showNextQuestion()) {
-        this.setupEndScreen();
+      Quiz.incrementCurrentQuestionNumber();
+      Quiz.setupQuestionScreen();
+      if (!Quiz.showNextQuestion()) {
+        Quiz.setupEndScreen();
         s.question_screen.fadeOut(function () {
           s.end_screen.fadeIn();
         });
       }
     });
+  },
+
+  startQuiz: function () {
+    this.showNextQuestion();
+    s.question_screen.fadeIn();
   },
 
   showNextQuestion: function () {
@@ -129,57 +144,45 @@ var s, Quiz = {
   },
 
   incrementCorrectGivenAnswers: function () {
-    s.numCorrectGivenAnswers++
+    s.numCorrectGivenAnswers++;
   },
 
-  startQuiz: function () {
-    this.showNextQuestion();
-    s.question_screen.fadeIn();
-  },
-
-  selectedAnswer: function (btn) {
-    btn.addClass("btn-primary");
-    btn.removeClass("btn-secondary");
+  selectAnswer: function (btn) {
+    $("#" + btn.attr("id")).addClass("btn-primary");
+    $("#" + btn.attr("id")).removeClass("btn-secondary");
   },
 
   deselectAnswer: function (btn) {
-    btn.addClass("btn-secondary");
-    btn.removeClass("btn-primary");
+    $("#" + btn.attr("id")).addClass("btn-secondary");
+    $("#" + btn.attr("id")).removeClass("btn-primary");
   },
 
   highlightRightAnwser: function (btn) {
-    btn.addClass("btn-success");
-    btn.removeClass("btn-secondary");
+    $("#" + btn.attr("id")).addClass("btn-success");
+    $("#" + btn.attr("id")).removeClass("btn-secondary");
   },
 
   hideRightAnswer: function (btn) {
-    btn.addClass("btn-secondary");
-    btn.removeClass("btn-success");
+    $("#" + btn.attr("id")).addClass("btn-secondary");
+    $("#" + btn.attr("id")).removeClass("btn-success");
   },
 
   highlightWrongAnswer: function (btn) {
-    btn.addClass("btn-danger");
-    btn.removeClass("btn-secondary");
+    $("#" + btn.attr("id")).addClass("btn-danger");
+    $("#" + btn.attr("id")).removeClass("btn-secondary");
   },
 
   hideWrongAnswer: function (btn) {
-    btn.addClass("btn-secondary");
-    btn.removeClass("btn-danger");
+    $("#" + btn.attr("id")).addClass("btn-secondary");
+    $("#" + btn.attr("id")).removeClass("btn-danger");
   },
 
   activate: function (btn) {
-    btn.addClass("enabled");
-    btn.removeClass("disabled");
+    $('#' + btn.attr('id')).attr("disabled", false);
   },
 
   deactivate: function (btn) {
-    btn.addClass("disabled");
-    btn.removeClass("enabled");
-  },
-
-  resetQuestionScreen: function () {
-    this.deselectAnswer(s.selectAnswer);
-    s.selectAnswer = null;
+    $('#' + btn.attr('id')).attr("disabled", true);
   },
 
   checkAnswer: function () {
@@ -200,29 +203,29 @@ var s, Quiz = {
     } else {
       console.log("no correct right answer");
     }
-    this.hideRightAnswer(s.rightAnswerButton);
+    this.highlightRightAnwser(s.rightAnswerButton);
 
-    if (s.rightAnswerButton.id != s.selectAnswer) {
+    if (s.rightAnswerButton != s.selectedAnswer) {
       this.deselectAnswer(s.selectedAnswer);
       this.highlightWrongAnswer(s.selectedAnswer);
     } else {
-      this.incrementRightAnswers();
+      this.incrementCorrectGivenAnswers();
     }
   },
 
   setupQuestionScreen: function () {
     this.hideRightAnswer(s.rightAnswerButton);
-    this.hideWrongAnswer(this.selectedAnswer);
+    this.hideWrongAnswer(s.selectedAnswer);
     this.deactivate(s.continue_btn);
-    s.selectAnswer = null;
+    s.selectedAnswer = null;
     s.rightAnswer = null;
     s.isAnswerCommited = false;
   },
 
   setupEndScreen: function () {
-    s.endpoints_text.text(s.rightAnswers);
+    s.endpoints_text.text(s.numCorrectGivenAnswers);
     s.possiblepoints_text.text(s.questions.length);
-    s.endmessage_text.text(this.calculateEndMessage(s.qeustions.length, s.rightAnswers))
+    s.endmessage_text.text(this.calculateEndMessage(s.questions.length, s.numCorrectGivenAnswers));
   },
 
   calculateEndMessage: function (totalQuestions, rightAnswers) {

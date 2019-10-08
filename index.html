@@ -12,9 +12,12 @@
   <!-- Bootstrap -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
+  <!-- include all compiled plugins -->
+  <script src="js/bootstrap.min.js"></script>
 </head>
 
 <!-- BODY -->
+
 <body>
   <div class="container">
     <nav class="navbar navbar-fixed">
@@ -54,19 +57,20 @@
         </div>
         <!-- answer D -->
         <div class="col-md-6">
-          <p><button id="answer_d_button" class="answer btn btn-secondary btn-block" role="button"><span id="answer_d"></span></button></p>
+          <p><button id="answer_d_button" class="answer btn btn-secondary btn-block" role="button"><span
+                id="answer_d"></span></button></p>
         </div>
       </div>
       <div class="row">
         <div class="col-md-10"></div>
         <div class="col-md-2">
           <!-- commit button -->
-          <p><button id="commit_button" class="disabled btn btn-default btn-block bg-primary"
-              role="button">Antworten</button>
+          <p><button id="commit_button" class="btn btn-default btn-block bg-primary" role="button"
+              disabled>Antworten</button>
           </p>
           <!-- continue button -->
-          <p><button id="continue_button" class="disabled btn btn-default btn-block bg-primary"
-              role="button">Weiter</button>
+          <p><button id="continue_button" class="btn btn-default btn-block bg-primary" role="button"
+              disabled>Weiter</button>
           </p>
         </div>
       </div>
@@ -79,11 +83,8 @@
       <p> <span id="end_message" class="display-3">Das ist doch prima!</span></p>
     </div>
   </div>
-  
-  <!-- include all compiled plugins -->
-  <script src="js/bootstrap.min.js"></script>
+
   <!-- my scripts -->
-  <script src="questions/questions.js"></script>
   <script src="js/quiz.js"></script>
   <script src="js/app.js"></script>
 </body>
