@@ -5,88 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Bibel Quiz</title>
+  <title>HQ</title>
 
-  <!-- jQuery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <!-- Bootstrap -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
-  <!-- include all compiled plugins -->
-  <script src="js/bootstrap.min.js"></script>
 </head>
 
-<!-- BODY -->
-
 <body>
-  <div class="container">
-    <nav class="navbar navbar-fixed">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand text-primary" href="#">JesusQUIZtus</a>
-        </div>
-      </div>
-    </nav>
-    <!-- START screen -->
-    <div id="start_screen" class="jumbotron quiz_start">
-      <h1 class="display-3">Herzlich Willkommen</h1>
-      <p class="lead">Das Quiz startet sofort...</p>
-      <p><button role="button" class="start btn btn-primary btn-lg" id="start_button">Start</button></p>
-    </div>
-    <!-- QUESTION screen -->
-    <div id="question_screen" class="collapse jumbotron quiz_question">
-      <h2>Frage <span id="question_nbr">1</span></h2>
-      <p id="question_text" class="display-4">Was ist die richtige Antwort?</p>
-      <div class="row">
-        <!-- answer A -->
-        <div class="col-md-6">
-          <p><button id="answer_a_button" class="answer btn btn-secondary btn-block" role="button"><span
-                id="answer_a"></span></button></p>
-        </div>
-        <!-- answer B -->
-        <div class="col-md-6">
-          <p><button id="answer_b_button" class="answer btn btn-secondary btn-block" role="button"><span
-                id="answer_b"></span></button></p>
-        </div>
-      </div>
-      <div class="row">
-        <!-- answer C -->
-        <div class="col-md-6">
-          <p><button id="answer_c_button" class="answer btn btn-secondary btn-block" role="button"><span
-                id="answer_c"></span></button></p>
-        </div>
-        <!-- answer D -->
-        <div class="col-md-6">
-          <p><button id="answer_d_button" class="answer btn btn-secondary btn-block" role="button"><span
-                id="answer_d"></span></button></p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-10"></div>
-        <div class="col-md-2">
-          <!-- commit button -->
-          <p><button id="commit_button" class="btn btn-default btn-block bg-primary" role="button"
-              disabled>Antworten</button>
-          </p>
-          <!-- continue button -->
-          <p><button id="continue_button" class="btn btn-default btn-block bg-primary" role="button"
-              disabled>Weiter</button>
-          </p>
-        </div>
-      </div>
-    </div>
-    <!-- END screen -->
-    <div id="end_screen" class="collapse jumbotron quiz_end">
-      <h1 class="display-3">Du hast alle Fragen beantwortet</h1>
-      <p class="lead">Du hast <span class="display-4" id="endpoints">0</span> von <span class="display-4"
-          id="possiblepoints">0</span> Fragen richtig beantwortet.</p>
-      <p> <span id="end_message" class="display-3">Das ist doch prima!</span></p>
-    </div>
+  <div id="content">
+    <a href="/quiz/quiz.html">Quiz</a>
   </div>
-
-  <!-- my scripts -->
-  <script src="js/quiz.js"></script>
-  <script src="js/app.js"></script>
 </body>
 
 </html>

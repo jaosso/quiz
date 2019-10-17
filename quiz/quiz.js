@@ -1,6 +1,13 @@
 var s, Quiz = {
 
   "settings": {
+    // end screen messages from best to worst (the only thing you may want to configure)
+    end_message_1: "Perfekt! Du hast es echt drauf!",
+    end_message_2: "Du weißt schon eine ganze Menge! Gut gemacht!",
+    end_message_3: "Das war garnicht so schlecht!",
+    end_message_4: "Du hast zumindest einige Fragen richtig beantwortet.",
+    end_message_5: "Das üben wir aber noch mal ;)",
+    ens_message_6: "Das war leider garnichts...",
     // gui screens
     start_screen: $(".quiz_start"),
     question_screen: $(".quiz_question"),
@@ -20,6 +27,7 @@ var s, Quiz = {
     possiblepoints_text: $("#possiblepoints"),
     endmessage_text: $("#end_message"),
     // variables
+    question_path: "/quiz/questions.json",
     questions: null,
     isAnswerCommited: false,
     selectedAnswer: null,
@@ -40,12 +48,12 @@ var s, Quiz = {
   },
 
   // --- this is the only function that should be executed by an script ---
-  init: function () {
+  init: function (content_frame) {
     s = this.settings;
     this.bindUIanctions();
 
     // fetch json file, with the questions
-    fetch("/questions/questions.json").then(resp => {
+    fetch(s.question_path).then(resp => {
       if (!resp.ok) {
         throw new Error("HTTP error " + response.status);
       }
@@ -236,17 +244,17 @@ var s, Quiz = {
     }
 
     if (hitRate == 1) {
-      return "Perfekt! Du hast es echt drauf!";
+      return s.end_message_1;
     } else if (hitRate < 1 && hitRate >= 0.8) {
-      return "Du weißt schon eine ganze Menge! Gut gemacht!";
+      return s.end_message_2;
     } else if (hitRate < 0.8 && hitRate >= 0.5) {
-      return "Das war garnicht so schlecht!";
+      return s.end_message_3;
     } else if (hitRate < 0.5 && hitRate >= 0.3) {
-      return "Du hast zumindest einige Fragen richtig beantwortet."
+      return s.end_message_4;
     } else if (hitRate < 0.3 && hitRate > 0) {
-      return "Das üben wir aber noch mal ;)";
+      return s.end_message_5;
     } else if (hitRate == 0) {
-      return "Das war leider garnichts..."
+      return s.end_message_6;
     } else {
       return "default";
     }
